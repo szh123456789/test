@@ -1,0 +1,42 @@
+
+\squid:S1854k"9Remove this useless assignment to local variable "list1".(¥èøÂÿÿÿÿÿ8‹ò××ð.
+isquid:S4488…"JReplace "@RequestMapping(method = RequestMethod.POST)" with "@PostMapping"(ûùƒª8‹ò××ð.
+[
+squid:S106-"9Replace this use of System.out or System.err by a logger.(üá»ùÿÿÿÿ8‹ò××ð.
+fsquid:S00112†"FDefine and throw a dedicated exception instead of using a generic one.(áÐ»ý8‹ò××ð.
+\squid:S3752Q">Add a "method" parameter to this "@RequestMapping" annotation.(›û”ã8‹ò××ð.
+\squid:S37529">Add a "method" parameter to this "@RequestMapping" annotation.(ìõ‹è8‹ò××ð.
+\
+squid:S106•"9Replace this use of System.out or System.err by a logger.(¥ˆ·éÿÿÿÿÿ8‹ò××ð.
+asquid:S3752\">Add a "method" parameter to this "@RequestMapping" annotation.(‚‘Íÿûÿÿÿÿ8‹ò××ð.
+Wsquid:S1854—"8Remove this useless assignment to local variable "list".(ÝÈåŒ8‹ò××ð.
+W
+squid:S106‰"9Replace this use of System.out or System.err by a logger.(âü¼™8‹ò××ð.
+\squid:S3752$">Add a "method" parameter to this "@RequestMapping" annotation.(‘Å»™8‹ò××ð.
+Xsquid:S1854–"9Remove this useless assignment to local variable "list3".(ï½±‘8‹ò××ð.
+bsquid:S3752’">Add a "method" parameter to this "@RequestMapping" annotation.(àÄÐãøÿÿÿÿ8‹ò××ð.
+Vsquid:S1854l"8Remove this useless assignment to local variable "list".(ÝÈåŒ8‹ò××ð.
+Wsquid:S1854‡"8Remove this useless assignment to local variable "list".(ÝÈåŒ8‹ò××ð.
+Hsquid:S1481‡")Remove this unused "list" local variable.(ÝÈåŒ8‹ò××ð.
+asquid:S3752g">Add a "method" parameter to this "@RequestMapping" annotation.(‹Ìùôüÿÿÿÿ8‹ò××ð.
+Wsquid:S1854n"9Remove this useless assignment to local variable "list3".(ï½±‘8‹ò××ð.
+fsquid:S5361;"HReplace this call to "replaceAll()" by a call to the "replace()" method.(ù™áÅ8‹ò××ð.
+W
+squid:S106"9Replace this use of System.out or System.err by a logger.(é‡Ñ8‹ò××ð.
+dsquid:S1192z"FDefine a constant instead of duplicating this literal "title" 5 times.(Ë˜üå8‹ò××ð.
+\squid:S37524">Add a "method" parameter to this "@RequestMapping" annotation.(ß¾Î8‹ò××ð.
+asquid:S3752L">Add a "method" parameter to this "@RequestMapping" annotation.(ž«ñ¬ûÿÿÿÿ8‹ò××ð.
+V
+squid:S106S"9Replace this use of System.out or System.err by a logger.(âü¼™8‹ò××ð.
+zsquid:S1488"[Immediately return this expression instead of assigning it to the temporary variable "jso".(À…‘¤8‹ò××ð.
+zsquid:S1488§"[Immediately return this expression instead of assigning it to the temporary variable "jso".(À…‘¤8‹ò××ð.
+V
+squid:S106B"9Replace this use of System.out or System.err by a logger.(âü¼™8‹ò××ð.
+lsquid:S00101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(‹Ì¾±8‹ò××ð.
+V
+squid:S106r"9Replace this use of System.out or System.err by a logger.(÷ðåŸ8‹ò××ð.
+\squid:S3752W">Add a "method" parameter to this "@RequestMapping" annotation.(›®©Û8‹ò××ð.
+\squid:S3752?">Add a "method" parameter to this "@RequestMapping" annotation.(Ãð’¨8‹ò××ð.
+[squid:S3752a">Add a "method" parameter to this "@RequestMapping" annotation.(µ´°8‹ò××ð.
+asquid:S3752F">Add a "method" parameter to this "@RequestMapping" annotation.(Š­ÌÕüÿÿÿÿ8‹ò××ð.
+psquid:S1450""RRemove the "tok" field and declare it as a local variable in the relevant methods.(¦‚ÿŽ8‹ò××ð.

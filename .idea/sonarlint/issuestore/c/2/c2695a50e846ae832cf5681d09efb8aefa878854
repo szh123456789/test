@@ -1,0 +1,25 @@
+
+V
+squid:S106G"9Replace this use of System.out or System.err by a logger.(‡³´¦8ŠÆ€ô‡/
+[
+squid:S106'"9Replace this use of System.out or System.err by a logger.(„àôöüÿÿÿÿ8¥Áøó‡/
+V
+squid:S106)"9Replace this use of System.out or System.err by a logger.(åêßÆ8»ˆüó‡/
+Msquid:S1068"*Remove this unused "userid" private field.(òÈÜÿÿÿÿÿ8š»ô‡/
+V
+squid:S1069"9Replace this use of System.out or System.err by a logger.(ß¢Ïô8ŠÆ€ô‡/
+[
+squid:S1060"9Replace this use of System.out or System.err by a logger.(‘Øªüÿÿÿÿ8ïúşó‡/
+V
+squid:S106@"9Replace this use of System.out or System.err by a logger.(Ê©ÎÄ8ŠÆ€ô‡/
+[
+squid:S1062"9Replace this use of System.out or System.err by a logger.(Ò‰–éıÿÿÿÿ8ïúşó‡/
+lsquid:S00101	"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(õ•ÙÁ8¯öÄ/
+usquid:UselessImportCheck"JRemove this unused import 'io.netty.channel.ChannelInboundHandlerAdapter'.(ş‘Â³8¯öÄ/
+V
+squid:S106"9Replace this use of System.out or System.err by a logger.(íñ¼ß8¯öÄ/
+Rsquid:S1172K"/Remove this unused method parameter "isOnline".(Éóÿ´şÿÿÿÿ8¯öÄ/
+Hsquid:S00108L")Either remove or fill this block of code.(­Ìç•8¯öÄ/
+isquid:UnusedPrivateMethodK"8Remove this unused private "setUserOnlineStatus" method.(Éóÿ´şÿÿÿÿ8¯öÄ/
+hsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(üõî%8¯öÄ/
+nsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(éØ»Úûÿÿÿÿ8¯öÄ/

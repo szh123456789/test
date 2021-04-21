@@ -1,0 +1,8 @@
+
+Zsquid:UselessImportCheck"6Remove this unused import 'javax.annotation.Resource'.(î¾Ì—
+|squid:UselessImportCheck"SRemove this unused import 'org.springframework.beans.factory.annotation.Autowired'.(¡ž¸Îùÿÿÿÿ
+Gsquid:S1068"0Remove this unused "TOKEN_SECRET" private field.(ÒÛÿ¬
+esquid:S00101
+"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(æ£¹°
+Qsquid:S1118
+":Add a private constructor to hide the implicit public one.(æ£¹°

@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    username: root
+    password:
+    url: jdbc:mysql://localhost:3306/x?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
+  thymeleaf:
+    cache: false
+
+  mvc:
+    view:
+      prefix:
+      suffix: .html
+  data:
+    elasticsearch:
+      cluster-nodes: 192.168.18.3:9300
+
+
+
+
+#  redis:
+#    database: 0
+#    host: 192.168.18.3
+#    port: 6379
+#    password:
+
+#  elasticsearch:
+#    jest:
+#      uris: http://localhost:9200
+#    static-locations=classpath:/templates/

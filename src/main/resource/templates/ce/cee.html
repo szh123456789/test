@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/jquery-3.4.1/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="css/xenon-components.css">
+    <link rel="stylesheet" href="css/xenon-core.css">
+    <link rel="stylesheet" href="css/xenon-skins.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/fonts/linecons/css/linecons.css">
+    <link rel="stylesheet" href="css/fonts/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="autocomplete.js-master/autocomplete.min.css"/>
+    <script src="autocomplete.js-master/autocomplete.min.js"></script>
+
+    <style>
+        .search_input{
+            border: none;
+            height: 25px;
+            line-height: 25px;
+            outline: none;
+            width: 350px;
+            vertical-align:bottom;
+        }
+        .suggest{
+            position:absolute;
+            border-top: 0;
+            width: 350px;
+            background-color: #fff;
+            display: none;
+            z-index: 4;
+        }
+    </style>
+
+</head>
+<body>
+<section class="sousuo">
+<div >
+
+</div>
+</section>
+
+    <!-- 标签 -->
+<label for="tags"><input type="search" id="tags" name="searchvalue" class="search_input" placeholder="请搜索.."></label>
+<div id="context1" class="suggest" >
+</div>
+<div class="row">
+    <div class="col-sm-3">
+        <div class="xe-widget xe-conversations box2 label-info " data-toggle="tooltip" data-original-title="https://dribbble.com/"
+          title=""  data-placement="bottom">
+            <div class="xe-comment-entry">
+                <img class="img-circle">
+                <div class="xe-comment">
+                <strong>测试</strong>
+                <p class="overflowClip_2">测试用句，系统平台测试用</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="xe-widget xe-conversations box2 label-info " data-toggle="tooltip" data-original-title="https://dribbble.com/"
+             title=""  data-placement="bottom">
+            <div class="xe-comment-entry">
+                <strong>测试</strong>
+                <p class="overflowClip_2">测试用句，系统平台测试用</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="xe-widget xe-conversations box2 label-info " data-toggle="tooltip" data-original-title="https://dribbble.com/"
+             title=""  data-placement="bottom">
+            <div class="xe-comment-entry">
+                <strong>测试</strong>
+                <p class="overflowClip_2">测试用句，系统平台测试用</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="xe-widget xe-conversations box2 label-info " data-toggle="tooltip" data-original-title="https://dribbble.com/"
+             title=""  data-placement="bottom">
+            <div class="xe-comment-entry">
+                <strong>测试</strong>
+                <p class="overflowClip_2">测试用句，系统平台测试用</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="xe-widget xe-conversations box2 label-info " data-toggle="tooltip" data-original-title="https://dribbble.com/"
+             title=""  data-placement="bottom">
+            <div class="xe-comment-entry">
+                <strong>测试</strong>
+                <p class="overflowClip_2">测试用句，系统平台测试用</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="xe-widget xe-conversations box2 label-info " data-toggle="tooltip" data-original-title="https://dribbble.com/"
+             title=""  data-placement="bottom">
+            <div class="xe-comment-entry">
+                <strong>测试</strong>
+                <p class="overflowClip_2">测试用句，系统平台测试用</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="xe-widget xe-conversations box2 label-info " data-toggle="tooltip" data-original-title="https://dribbble.com/"
+             title=""  data-placement="bottom">
+            <div class="xe-comment-entry">
+                <strong>测试</strong>
+                <p class="overflowClip_2">测试用句，系统平台测试用</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!--<script>-->
+
+<!--$(function () {-->
+
+
+<!--    if(localStorage.getItem("token") != null) {-->
+<!--        var too = localStorage.token;-->
+<!--        debugger;-->
+<!--        $.ajax({-->
+<!--            url: '/ceec',-->
+<!--            type: 'post',-->
+<!--            data: {'token': too},-->
+<!--            success: function (data) {-->
+<!--                if (data === true) {-->
+<!--                    location.assign("/sindex");-->
+<!--                } else {-->
+<!--                    location.assign("/slandd");-->
+<!--                }-->
+<!--            }-->
+<!--        })-->
+<!--    }else{-->
+<!--        location.assign("/slandd");-->
+<!--    }-->
+<!--})-->
+
+
+<!--// </script>-->
+<script>
+    function changeBackColor_over(div){
+        $(div).css("background-color","#CCCCCC");
+    }
+    //鼠标离开内容
+    function changeBackColor_out(div){
+        $(div).css("background-color","");
+    }
+    //将点击的内容放到搜索框
+    function setSearch_onclick(div){
+        $("#tags").val(div.innerText);
+        $("#context1").css("display","none");
+    }
+
+    $("#tags").keyup(function(){
+        var content=$(this).val();
+        //如果当前搜索内容为空，无须进行查询
+        if(content==""){
+            $("#context1").css("display","none");
+            return ;
+        }
+        //由于浏览器的缓存机制 所以我们每次传入一个时间
+        var time=new Date().getTime();
+        debugger;
+        $.ajax({
+            type:"get",
+            //新建一个名为findBooksAjaxServlet的servlet
+            url:"comp",
+            data:{'term':content},
+            success:function(data){
+                var d = data.toString();
+                //拼接html
+                console.log(data);
+                var res=d.split(",");
+                var html="";
+                for(var i=0;i<res.length;i++){
+                    //每一个div还有鼠标移出、移入点击事件
+                    html+="<div onclick='setSearch_onclick(this)' onmouseout='changeBackColor_out(this)' onmouseover='changeBackColor_over(this)'>"+res[i]+"</div>";
+                }
+                $("#context1").html(html);
+                //显示为块级元素
+                $("#context1").css("display","block");
+            }
+        });
+    });
+
+
+
+</script>
+</body>
+</html>

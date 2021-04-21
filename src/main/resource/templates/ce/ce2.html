@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="/jquery-3.4.1/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<form enctype="multipart/form-data" name="fileinfo">
+    <input type="button" value="下载" onclick="dow()">
+    <input type="file" name="file" id="fi">
+</form>
+
+
+<script>
+    function dow(){
+      const LENGTH = 1024*1024*5;
+       var file = document.getElementsByName('file')[0].files[0];
+       var filename = document.getElementsByName('file')[0].files[0].name;
+       var totalSize = file.size;
+       var start = 0;
+       var end = start + LENGTH;
+       var fd = null;
+       var blob = null;
+       var req = null;
+       while(start < totalSize){
+           fd = new FormData();
+           req = new XMLHttpRequest();
+           req.open('POST','http://192.168.18.3:7878/up',false);
+           blob = file.slice(start,end);
+           fd.append('file_data',blob);
+           fd.append('filename',filename);
+           fd.append('file_size',totalSize);
+           req.send(fd);
+           start = end;
+           end = start + LENGTH;
+       }
+    }
+
+</script>
+</body>
+</html>

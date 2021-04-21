@@ -1,0 +1,7 @@
+
+nsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(Î·ãòùÿÿÿÿ8£ó××ð.
+„squid:UselessImportCheck"YRemove this unused import 'org.springframework.boot.context.event.ApplicationReadyEvent'.(žÐ‰“8£ó××ð.
+hsquid:CommentedOutCodeLine"<This block of commented-out lines of code should be removed.(‹²z8£ó××ð.
+|squid:UselessImportCheck"LRemove this unused import 'org.springframework.context.event.EventListener'.(¦ñÛÐüÿÿÿÿ8£ó××ð.
+lsquid:S00101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(Ú™æÒ8£ó××ð.
+usquid:UselessImportCheck"ERemove this unused import 'org.mybatis.spring.annotation.MapperScan'.(½‡ö–þÿÿÿÿ8£ó××ð.
