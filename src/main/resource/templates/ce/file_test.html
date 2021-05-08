@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/css/fonts/linecons/css/linecons.css">
     <link rel="stylesheet" href="/css/fonts/fontawesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/autocomplete.js-master/autocomplete.min.css"/>
-    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" href="/layui/css/layui.css">
     <script src="/autocomplete.js-master/autocomplete.min.js"></script>
     <script src="/md5.js"></script>
     <script src="/tool.js"></script>
@@ -53,6 +53,7 @@
             //把加密的信息 转为一个64位的
             var key62 = Tool._10to62(key10);
             //前面的参数必须和controller层定义的一样
+            // $.cookie("key",key62,{expires:7});
             fd.append('file',fileShard);
             fd.append('suffix',suffix);
             fd.append('shardIndex',shardIndex);
@@ -122,6 +123,18 @@
             })
         }
 
+        function chuan() {
+            var file=$('#inputfile').get(0).files[0];
+            //把视频的信息存储为一个字符串
+            var filedetails=file.name+file.size+file.type+file.lastModifiedDate;
+            //使用当前文件的信息用md5加密生成一个key 这个加密是根据文件的信息来加密的  如果相同的文件 加的密还是一样的
+            var key = hex_md5(filedetails);
+            var key10 = parseInt(key,16);
+            //把加密的信息 转为一个64位的
+            var key62 = Tool._10to62(key10);
+            localStorage.ke=key62;
+            // document.getElementByTags('a')[0].href ="/vtitle?key="+key62;
+        }
     </script>
 </head>
 <body>
@@ -140,9 +153,15 @@
     </tr>
 </table>
 <div class="progress-title" style="font-size: 14px;color: #fff"></div>
-    <div class="layui-progress" lay-filter="demo" lay-showPercent="yes" style="height: 10px;margin-left: 100px;margin-top: -10px">
-        <div id="demo1" class="layui-progress-bar" style="height: 10px;background-color: #3366ff;color: #fff"></div>
-    </div>
 
+<div>
+    <a href="/vtitle" onclick="chuan()">设置题目</a>
+<!--    <button id="tit" onclick="sub()">设置题目</button>-->
+</div>
+<!--<script>-->
+<!--    function sub() {-->
+<!--        window.open("/vtitle");-->
+<!--    }-->
+<!--</script>-->
 </body>
 </html>

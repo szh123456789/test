@@ -2,23 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-<!--    <meta http-equiv="Range" content="bytes=0-1024">-->
     <title>Title</title>
     <script src="/jquery-3.4.1/jquery-3.4.1.min.js"></script>
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="css/xenon-components.css">
-    <link rel="stylesheet" href="css/xenon-core.css">
-    <link rel="stylesheet" href="css/xenon-skins.css">
-    <link rel="stylesheet" href="css/nav.css">
-    <link rel="stylesheet" href="css/fonts/linecons/css/linecons.css">
-    <link rel="stylesheet" href="css/fonts/fontawesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="autocomplete.js-master/autocomplete.min.css"/>
-    <script src="autocomplete.js-master/autocomplete.min.js"></script>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/xenon-components.css">
+    <link rel="stylesheet" href="/css/xenon-core.css">
+    <link rel="stylesheet" href="/css/xenon-skins.css">
+    <link rel="stylesheet" href="/css/nav.css">
+    <link rel="stylesheet" href="/css/fonts/linecons/css/linecons.css">
+    <link rel="stylesheet" href="/css/fonts/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/autocomplete.js-master/autocomplete.min.css"/>
+    <script src="/autocomplete.js-master/autocomplete.min.js"></script>
 
 </head>
 <body>
- <video width="800" id="myvideo" >
-     <source src="http://localhost:8080/get" type="video/mp4">
+ <video width="800" id="myvideo" controls="controls" autoplay="autoplay" preload="auto"
+         src="http://localhost:8080/get" type="video/mp4"  onMouseOver="this.play()" onMouseOut="this.pause()" >
+<!--     <source src="http://192.168.18.3:8080/get" type="video/mp4">-->
  </video>
+
+<script>
+
+    var sim=0;
+    //监听播放时间
+    var video = document.getElementById('myvideo');
+    //使用事件监听方式捕捉事件
+    video.addEventListener("timeupdate",function(){
+        var timeDisplay;
+        //用秒数来显示当前播放进度
+        timeDisplay = Math.floor(video.currentTime);
+        console.log(Math.floor(video.currentTime))
+        //当视频播放到 4s的时候做处理
+        if(timeDisplay == 4){
+            if (sim ==0) {
+                video.pause();
+                alert("弹出");
+                video.play();
+                sim =1;
+            }
+        }
+    },false);
+
+</script>
 </body>
 </html>

@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <script src="layui/layui.js" charset="utf-8"></script>
     <link rel="stylesheet" href="layui/css/layui.css" media="all">
     <link rel="stylesheet" href="css/bootstrap.css">
@@ -13,6 +16,156 @@
     <script src="/jquery-3.4.1/jquery-3.4.1.min.js"></script>
 </head>
 <body>
+<div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">题目</label>
+    <div class="layui-input-block">
+        <textarea placeholder="请输入内容" class="layui-textarea" id="tx"></textarea>
+    </div>
+</div>
+<div class="layui-form-item">
+    <div class="layui-input-block">
+      a <input type="radio" name="xuan" value="a" title="a">
+        <div class="layui-unselect layui-form-radio">
+            <div class="layui-anim layui-icon"></div>
+            <div>
+              <input type="text" id="a">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="layui-form-item">
+    <div class="layui-input-block">
+      b <input type="radio" name="xuan" value="b" title="b" >
+        <div class="layui-unselect layui-form-radio">
+            <div class="layui-anim layui-icon"></div>
+            <div>
+                <input type="text" id="b">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="layui-form-item">
+    <div class="layui-input-block">
+        c <input type="radio" name="xuan" value="c" title="c" >
+        <div class="layui-unselect layui-form-radio">
+            <div class="layui-anim layui-icon"></div>
+            <div>
+                <input type="text" id="c">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="layui-form-item">
+    <div class="layui-input-block">
+        d <input type="radio" name="xuan" value="d" title="d" >
+        <div class="layui-unselect layui-form-radio">
+            <div class="layui-anim layui-icon"></div>
+            <div>
+                <input type="text" id="d">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="layui-form-item">
+    <div class="layui-input-block">
+        出现时间 <input type="number"  id="fen" style="width: 50px ;">分
+                <input type="number"  id="miao" style="width: 50px">秒
+    </div>
+</div>
+<div class="layui-form-item">
+    <div class="layui-input-block">
+        <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1" onclick="ere()" id="sub">立即提交</button>
+    </div>
+</div>
 
+<script>
+    // var con =window.opener.document.getElementById("tit").innerHTML;
+
+    // function ere(){
+        // var s =document.getElementById("tx").value;
+        // alert(s);
+    // }
+
+    // $('input:radio').click(function(){
+    //     var $radio = $(this);
+    //     if ($radio.data('checked')){
+    //         $radio.prop('checked', false);
+    //         $radio.data('checked', false);
+    //     } else {
+    //         $radio.prop('checked', true);
+    //         $radio.data('checked', true);
+    //     }
+    // });
+
+    $(function(){
+        $("#sub").click(function(){
+            var ke=localStorage.ke;
+
+            var st =document.getElementById("tx").value;
+            var s;
+            var aa=document.getElementById("a").value;
+            var bb=document.getElementById("b").value;
+            var cc=document.getElementById("c").value;
+            var dd=document.getElementById("d").value;
+            var fen=document.getElementById("fen").value;
+            var fenn =parseInt(fen)* 60;
+            var miao=document.getElementById("miao").value;
+            var fm =fenn+parseInt(miao);
+            var val=$('input:radio[name="xuan"]:checked').val();
+            if(val==null){
+                alert(fm);
+                alert("什么也没选中!");
+                return false;
+            }
+            else{
+                if (val == "a"){
+                 s=  document.getElementById("a").value;
+
+                    // alert(aa);
+                }
+                if (val == "b"){
+                   s= document.getElementById("b").value;
+                    // alert(bb);
+                }
+                if (val == "c"){
+                   s= document.getElementById("c").value;
+                    // alert(cc);
+                }
+                if (val == "d"){
+                   s= document.getElementById("d").value;
+                    // alert(dd);
+                }
+                // alert(typeof val);
+                // alert(val);
+                $.ajax({
+                    url:"/ti/set",
+                    type:"post",
+                    data:{"st":st,
+                          "s": s,
+                         "aa":aa,
+                        "bb":bb,
+                        "cc":cc,
+                        "dd":dd,
+                        "ke": ke,
+                        "fm":parseInt(fm)
+                    },
+                    success:function(data){
+                        if (data=="ok"){
+                            alert("提交成功");
+                        }
+                    }
+                })
+            }
+            // var list= $('input:radio[name="list"]:checked').val();
+            // if(list==null){
+            //     alert("请选中一个!");
+            //     return false;
+            // }
+            // else{
+            //     alert(list);
+            // }
+        });
+    });
+</script>
 </body>
 </html>
