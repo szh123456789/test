@@ -5,15 +5,18 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.event.EventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+@ServletComponentScan
 @SpringBootApplication()
-@MapperScan("com.test.tools.video.dao")
+
+@MapperScan("com.test")
 public class start {
     public static void main(String[] args) {
 //        Map<String,String> map = new HashMap<>();

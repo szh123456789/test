@@ -20,7 +20,6 @@ public class Httpclient {
         urlConn.setDoOutput(true);
         urlConn.setDoInput(true);
         urlConn.setRequestMethod("POST");
-
         String str =i;
         OutputStream out = urlConn.getOutputStream();
         out.write(str.getBytes());

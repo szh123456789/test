@@ -96,6 +96,10 @@ public class t_load {
     }
 
 
+    @RequestMapping("vtitle")
+    public String vt(){
+        return "ce/vtitle";
+    }
     public String getNn() {
         return nn;
     }

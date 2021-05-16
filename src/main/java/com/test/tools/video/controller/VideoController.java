@@ -12,6 +12,11 @@ import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.RandomAccessFile;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
 
 /**
@@ -19,6 +24,7 @@ import java.io.RandomAccessFile;
  */
 @RestController
 public class VideoController {
+
 
     @RequestMapping("/get")
     public void play(HttpServletResponse response, HttpServletRequest request) throws IOException {
@@ -30,15 +36,15 @@ public class VideoController {
         RandomAccessFile randomAccessFile = new RandomAccessFile(file,"r");
 
         String rangeString = request.getHeader("Range");
+        String lt = request.getHeader("If-Modified-Since");
         long range =0;
         if (StrUtil.isNotBlank(rangeString)){
             range = Long.valueOf(rangeString.substring(rangeString.indexOf("=") + 1, rangeString.indexOf("-")));
         }
 
+        String t =ti();
         OutputStream outputStream = response.getOutputStream();
-
         response.setHeader("Content-Type", "video/mp4");
-
         response.setStatus(HttpServletResponse.SC_PARTIAL_CONTENT);
 
         randomAccessFile.seek(range);
@@ -57,4 +63,16 @@ public class VideoController {
         System.out.println("返回数据区间:【"+range+"-"+(range+len)+"】");
     }
 
+    public String ti(){
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("EEE,d-MMM-yyyy HH:mm:ss z ", Locale.ENGLISH);
+        Calendar rightNow = Calendar.getInstance();
+        rightNow.setTime(date);
+        rightNow.add(Calendar.MONTH, 1);
+        rightNow.setTimeZone(TimeZone.getTimeZone("GMT"));
+        Date dt1 = rightNow.getTime();
+        String reStr = sdf.format(dt1);
+//        System.out.println(reStr);
+        return reStr;
+    }
 }

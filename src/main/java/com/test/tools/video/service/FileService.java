@@ -15,9 +15,13 @@ public class FileService {
     @Autowired
     private FileMapper fileMapper;
 
+
+    //根据情况 保存
     public void save(FileDTO file1){
+        //条件构造
         LambdaQueryWrapper<FileDTO> lambda = new QueryWrapper<FileDTO>().lambda();
         lambda.eq(FileDTO::getFileKey,file1.getFileKey());
+        //查询结果
         List<FileDTO> fileDTOS = fileMapper.selectList(lambda);
 
         if (fileDTOS.size()!=0){
@@ -29,6 +33,7 @@ public class FileService {
         }
     }
 
+    // 查询是否插入
     public List<FileDTO> check(String key){
         LambdaQueryWrapper<FileDTO> lambda = new QueryWrapper<FileDTO>().lambda();
         lambda.eq(FileDTO::getFileKey,key);

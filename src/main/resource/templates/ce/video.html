@@ -4,43 +4,122 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="/jquery-3.4.1/jquery-3.4.1.min.js"></script>
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="/css/xenon-components.css">
-    <link rel="stylesheet" href="/css/xenon-core.css">
-    <link rel="stylesheet" href="/css/xenon-skins.css">
-    <link rel="stylesheet" href="/css/nav.css">
-    <link rel="stylesheet" href="/css/fonts/linecons/css/linecons.css">
-    <link rel="stylesheet" href="/css/fonts/fontawesome/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="/autocomplete.js-master/autocomplete.min.css"/>
-    <script src="/autocomplete.js-master/autocomplete.min.js"></script>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="css/xenon-components.css">
+    <link rel="stylesheet" href="css/xenon-core.css">
+    <link rel="stylesheet" href="css/xenon-skins.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/fonts/linecons/css/linecons.css">
+    <link rel="stylesheet" href="css/fonts/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="autocomplete.js-master/autocomplete.min.css"/>
+    <script src="autocomplete.js-master/autocomplete.min.js"></script>
 
+<!--    <style>-->
+
+<!--        .one,.two{-->
+
+<!--            width: 50%;-->
+
+<!--            height: 700px;-->
+
+<!--            border:1px solid #ccc;-->
+
+<!--            float: left;-->
+
+<!--            box-sizing: border-box;-->
+
+<!--        }-->
+
+<!--    </style>-->
 </head>
 <body>
+<div  >
  <video width="800" id="myvideo" controls="controls" autoplay="autoplay" preload="auto"
-         src="http://localhost:8080/get" type="video/mp4"  onMouseOver="this.play()" onMouseOut="this.pause()" >
+         src="http://localhost:8080/get" type="video/mp4"   onMouseOut="this.pause()" >
 <!--     <source src="http://192.168.18.3:8080/get" type="video/mp4">-->
  </video>
+    <div  id="gt" style="height: 500px">
+
+    </div>
+
+</div>
 
 <script>
-
+var tt="";
+var dt="";
+var l="";
+var t="";
+var ji=0;
+var an="";
+    $(function(){
+        $.ajax({
+            url:"in/gett",
+            type: "post",
+            data:{"fk":localStorage.fk},
+            success: function (data) {
+                l=data.length;
+                dt=data;
+                console.log(data);
+                // console.log(tt);
+                localStorage.dat=dt[0].title;
+                localStorage.a=dt[0].a;
+                localStorage.b=dt[0].b;
+                localStorage.c=dt[0].c;
+                localStorage.d=dt[0].d;
+                localStorage.ans=dt[0].answer;
+                tt=dt[0].time;
+            }
+        })
+    })
     var sim=0;
     //监听播放时间
     var video = document.getElementById('myvideo');
     //使用事件监听方式捕捉事件
+
+
     video.addEventListener("timeupdate",function(){
+
         var timeDisplay;
         //用秒数来显示当前播放进度
         timeDisplay = Math.floor(video.currentTime);
         console.log(Math.floor(video.currentTime))
         //当视频播放到 4s的时候做处理
-        if(timeDisplay == 4){
-            if (sim ==0) {
-                video.pause();
-                alert("弹出");
-                video.play();
-                sim =1;
+
+            if (timeDisplay == tt) {
+                // if(t!=tt){
+                //     console.log("-------");
+                //     sim=0;
+                //     t=tt;
+                //     console.log(t);
+                // }
+                if (sim == 0) {
+                    video.pause();
+                    document.getElementById("gt").innerHTML='<iframe id="gtt" style="height:70%;width:50%" src = "/in/gtl" scrolling="yes"></iframe>';
+                    // document.getElementById("viewDiv").innerHTML = '<object type="text/html" data="/ce" width="100%" height="100%"></object>';
+
+                    if (ji==l){
+                        sim = 1;
+                    }
+                    if (localStorage.aa==1) {
+                        video.play();
+                        if (ji<l) {
+                            ji=ji+1;
+                            localStorage.dat=dt[ji].title;
+                            localStorage.a=dt[ji].a;
+                            localStorage.b=dt[ji].b;
+                            localStorage.c=dt[ji].c;
+                            localStorage.d=dt[ji].d;
+                            localStorage.ans=dt[ji].answer;
+                            tt=dt[ji].time;
+                            sim = 0;
+                        }
+                    }
+                    if (localStorage.aa==0){
+                        video.pause();
+                    }
+                }
+                t=tt;
             }
-        }
     },false);
 
 </script>

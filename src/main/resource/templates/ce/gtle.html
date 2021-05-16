@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="/layui/layui.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/xenon-components.css">
+    <link rel="stylesheet" href="/css/xenon-core.css">
+    <link rel="stylesheet" href="/css/xenon-skins.css">
+    <link rel="stylesheet" href="/css/nav.css">
+    <script src="/jquery-3.4.1/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+<div class="layui-form-item layui-form-text">
+    <label class="layui-form-label">题目</label>
+    <div class="layui-input-block">
+        <textarea  class="layui-textarea" id="tx" disabled style="resize:none border:none;" ></textarea>
+    </div>
+</div>
+<div class="layui-form-item">
+    <div class="layui-input-block">
+        a <input type="radio" name="xuan" value="a" title="a">
+        <div class="layui-unselect layui-form-radio">
+            <div class="layui-anim layui-icon"></div>
+            <div>
+                <input type="text" id="a" style="border:none;" readonly>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="layui-form-item">
+    <div class="layui-input-block">
+        b <input type="radio" name="xuan" value="b" title="b" >
+        <div class="layui-unselect layui-form-radio">
+            <div class="layui-anim layui-icon"></div>
+            <div>
+                <input type="text" id="b" style="border:none;" readonly>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="layui-form-item">
+    <div class="layui-input-block">
+        c <input type="radio" name="xuan" value="c" title="c" >
+        <div class="layui-unselect layui-form-radio">
+            <div class="layui-anim layui-icon"></div>
+            <div>
+                <input type="text" id="c" style="border:none;" readonly>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="layui-form-item">
+    <div class="layui-input-block">
+        d <input type="radio" name="xuan" value="d" title="d" >
+        <div class="layui-unselect layui-form-radio">
+            <div class="layui-anim layui-icon"></div>
+            <div>
+                <input type="text" id="d" style="border:none;" readonly>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="layui-form-item">
+    <div class="layui-input-block">
+        <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1" onclick="ere()" id="sub">立即提交</button>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        localStorage.aa=0;
+        document.getElementById("tx").value=localStorage.dat;
+        document.getElementById("a").value=localStorage.a;
+        document.getElementById("b").value=localStorage.b;
+        document.getElementById("c").value=localStorage.c;
+        document.getElementById("d").value=localStorage.d;
+    })
+
+    function ere() {
+        var s;
+        var val=$('input:radio[name="xuan"]:checked').val();
+        s=document.getElementById(val).value;
+        if (s==localStorage.ans){
+            localStorage.aa=1;
+        }else{
+            localStorage.aa=0;
+        }
+    }
+</script>
+</body>
+</html>

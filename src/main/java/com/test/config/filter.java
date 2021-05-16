@@ -1,6 +1,7 @@
 package com.test.config;
 
 import com.test.tools.token.token_util;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
