@@ -29,6 +29,7 @@ public class ind {
         Map<String,List<Map<String,Object>>> mp=new HashMap<>();
         mp.put("num",lii);
         mp.put("mem",li);
+        System.out.println(mp);
         return mp;
     }
 
@@ -43,5 +44,17 @@ public class ind {
     @RequestMapping("/gtl")
     public String gtt(){
         return "ce/gtle";
+    }
+
+    @ResponseBody
+    @RequestMapping("/sou")
+    public Map<String,List<Map<String,Object>>> souu(String name){
+        List<Map<String,Object>> li= jt.queryForList("select name as na,file_key as fk from file where name like '%"+name+"%'");
+//        System.out.println(li);
+        List<Map<String,Object>> lii =jt.queryForList("select count(file_key) as fkn from file where name like '%"+name+"%'");
+        Map<String,List<Map<String,Object>>> mp=new HashMap<>();
+        mp.put("num",lii);
+        mp.put("mem",li);
+        return mp;
     }
 }

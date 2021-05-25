@@ -77,6 +77,7 @@ public class FileController {
                 .append(".")
                 .append(shardIndex)
                 .toString();
+
         //绝对路径保存重命名图片
         File targeFile = new File(basePath,localfileName);
         //上传图片
@@ -86,7 +87,6 @@ public class FileController {
         file1.setPath(basePath+localfileName);
         file1.setSuffix(suffix);
         file1.setName(name);
-        file1.setSuffix(ext);
         file1.setSize(size);
         file1.setCreatedAt(System.currentTimeMillis());
         file1.setUpdatedAt(System.currentTimeMillis());
@@ -94,13 +94,14 @@ public class FileController {
         file1.setShardSize(shardSize);
         file1.setShardTotal(shardTotal);
         file1.setFileKey(key);
-        //插入数据库，保存处理
+         //插入数据库，保存处理
         fileService.save(file1);
         //判断是否为最后片段
         if (shardIndex.equals(shardTotal)){
             file1.setPath(basePath+name);
             this.merge(file1);
         }
+
         return "上传成功";
     }
 
@@ -121,7 +122,7 @@ public class FileController {
         //截取视频所在路径
         path = path.replace(basePath,"");
         Long shardTotal = fileDTO.getShardTotal();
-        File newFile = new File(basePath + path);
+        File newFile = new File(basePath + path+"."+fileDTO.getSuffix());
         //文件追加写入
         FileOutputStream outputStream = new FileOutputStream(newFile,true);
         //分片文件

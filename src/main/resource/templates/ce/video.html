@@ -31,11 +31,22 @@
 <!--        }-->
 
 <!--    </style>-->
+    <script>
+        $(function(){
+            $.ajax({
+                url: "sett",
+                type:"post",
+                sync: false,
+                data:{"fk":localStorage.fk}
+            });
+        })
+
+    </script>
 </head>
 <body>
 <div  >
  <video width="800" id="myvideo" controls="controls" autoplay="autoplay" preload="auto"
-         src="http://localhost:8080/get" type="video/mp4"   onMouseOut="this.pause()" >
+         src="http://localhost:8080/get" type="video/mp4"   onMouseOut="this.pause()" style="width: 909px;" >
 <!--     <source src="http://192.168.18.3:8080/get" type="video/mp4">-->
  </video>
     <div  id="gt" style="height: 500px">
@@ -52,6 +63,7 @@ var t="";
 var ji=0;
 var an="";
     $(function(){
+
         $.ajax({
             url:"in/gett",
             type: "post",

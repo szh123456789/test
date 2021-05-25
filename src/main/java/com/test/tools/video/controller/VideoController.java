@@ -2,6 +2,8 @@ package com.test.tools.video.controller;
 
 
 import cn.hutool.core.util.StrUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,10 +15,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.RandomAccessFile;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
-import java.util.TimeZone;
+import java.util.*;
 
 
 /**
@@ -25,11 +24,38 @@ import java.util.TimeZone;
 @RestController
 public class VideoController {
 
+    @Autowired
+    private JdbcTemplate jt;
 
+    String path;
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+    String sp="";
+
+    @RequestMapping("/sett")
+    public void pp(String fk)throws IOException{
+
+        List<Map<String,Object>> li= jt.queryForList("select path,suffix  from file where file_key='"+fk+"'");
+       String  pa=li.get(0).get("path").toString();
+//        System.out.println(pa);
+        String[] sts =pa.split("\\.");
+//        System.out.println(sts[0]);
+//        System.out.println(sts[1]);
+        this.setPath(sts[0]+"."+li.get(0).get("suffix").toString());
+        sp=this.getPath();
+    }
     @RequestMapping("/get")
     public void play(HttpServletResponse response, HttpServletRequest request) throws IOException {
         response.reset();
-        File file = new File("/home/szh/视频/netty/11丨源码剖析：Netty对Reactor的支持.mp4");
+
+        File file = new File(sp);
+//        System.out.println(getPath());
         Long fileLength = file.length();
 
         //随机读文件
@@ -56,7 +82,8 @@ public class VideoController {
         response.setHeader("Content-Range", "bytes "+range+"-"+(fileLength-1)+"/"+fileLength);
 
         outputStream.write(bytes,0,len);
-//        outputStream.flush();
+
+        outputStream.flush();
         outputStream.close();
         randomAccessFile.close();
 

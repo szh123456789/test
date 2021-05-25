@@ -185,8 +185,8 @@ public class token_test {
     }
 
 
-    @Test
-    public void ds() throws Exception{
-    sm.shor();
-    }
+//    @Test
+//    public void ds() throws Exception{
+//    sm.shor();
+//    }
 }

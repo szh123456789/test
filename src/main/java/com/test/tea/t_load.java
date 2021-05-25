@@ -39,9 +39,9 @@ public class t_load {
     }
 
     @RequestMapping("tlanddd")
-    public String tlanddd(@RequestParam("name") String name, @RequestParam("password") String password){
+    public String tlanddd(@RequestParam("name") String name, @RequestParam("password") String password,@RequestParam("tem") String tem){
         String uuid= UUID.randomUUID().toString().replaceAll("-","");
-        jdbcTemplate.update("insert into teacher(name,password,tid) values ('"+name+"','"+password+"','"+uuid+"')");
+        jdbcTemplate.update("insert into teacher(name,password,tid,tem) values ('"+name+"','"+password+"','"+uuid+"','"+tem+"')");
         return "tea/T_Land";
     }
     @RequestMapping("/texam")

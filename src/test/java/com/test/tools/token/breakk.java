@@ -31,6 +31,7 @@ public class breakk {
     @Test
     public void s() throws  Exception{
         heartclient hc = new heartclient("192.168.18.3",9999);
-        hc.run();
+         hc.run();
+         Thread.sleep(10000);
     }
 }

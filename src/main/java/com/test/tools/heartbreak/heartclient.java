@@ -47,7 +47,7 @@ public class heartclient {
             BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
             while(true) {
                 channel.writeAndFlush("456");
-                Thread.sleep(10000);
+                Thread.sleep(1000);
             }
         }catch(Exception e){
             e.printStackTrace();

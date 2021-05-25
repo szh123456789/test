@@ -43,7 +43,7 @@
 
     <!-- 标签 -->
 <label for="tags"><input type="search" id="tags" name="searchvalue" class="search_input" placeholder="请搜索.."></label>
-<button id="cli" >确定</button>
+<button id="cli"  onclick="souu()">确定</button>
 <div id="context1" class="suggest" >
 </div>
 <div class="row" id="roo">
@@ -60,7 +60,7 @@
             url: "in/de",
             type:"post",
             success: function (data) {
-               console.log(data.mem[1].na);
+               console.log(data.mem[0].na);
              var n=   data.num[0].fkn;
                 for (var i =0;i<n;i++){
                     html+="<div class=\"col-sm-3\" >\n" +
@@ -69,7 +69,7 @@
                         "            <div class=\"xe-comment-entry\">\n" +
                         "                <img class=\"img-circle\" >\n" +
                         "                <div class=\"xe-comment\">\n" +
-                        "                <p class=\"overflowClip_2\">"+data.mem[i].na+"vv</p>\n" +
+                        "                <p class=\"overflowClip_2\">"+data.mem[i].na+"</p>\n" +
                         "                </div>\n" +
                         "            </div>\n" +
                         "        </div>\n" +
@@ -78,12 +78,35 @@
                 document.getElementById('roo').innerHTML=html;
             }
         })
-
-
-
-
     });
 
+    function souu() {
+        var s=$("#tags").val();
+        var html="";
+        $.ajax({
+            url:'in/sou',
+            type:'post',
+            data:{"name" :s},
+            success:function (data) {
+                console.log(data.mem[0].na);
+                var n=   data.num[0].fkn;
+                for (var i =0;i<n;i++){
+                    html+="<div class=\"col-sm-3\" >\n" +
+                        "        <div class=\"xe-widget xe-conversations box2 label-info \" value='"+data.mem[i].fk+"' id='ke"+i+"' onclick='ses(this)' data-toggle=\"tooltip\" data-original-title=\"https://dribbble.com/\"\n" +
+                        "          title=\"\"  data-placement=\"bottom\">\n" +
+                        "            <div class=\"xe-comment-entry\">\n" +
+                        "                <img class=\"img-circle\" >\n" +
+                        "                <div class=\"xe-comment\">\n" +
+                        "                <p class=\"overflowClip_2\">"+data.mem[i].na+"</p>\n" +
+                        "                </div>\n" +
+                        "            </div>\n" +
+                        "        </div>\n" +
+                        "    </div>";
+                }
+                document.getElementById('roo').innerHTML=html;
+            }
+        })
+    }
     function ses(k){
 
         var s=document.getElementById(k.id).getAttribute("value");

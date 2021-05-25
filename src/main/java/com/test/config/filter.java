@@ -22,14 +22,14 @@ public class filter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        HttpServletRequest request = (HttpServletRequest) servletRequest;
-        HttpServletResponse response = (HttpServletResponse) servletResponse;
-
-        String token = request.getHeader("token");
-        if(tu.verify(token)){
-            ((HttpServletResponse) servletResponse).sendRedirect("/sindex");
-            filterChain.doFilter(servletRequest,servletResponse);
-        };
+//        HttpServletRequest request = (HttpServletRequest) servletRequest;
+//        HttpServletResponse response = (HttpServletResponse) servletResponse;
+//
+//        String token = request.getHeader("token");
+//        if(tu.verify(token)){
+//            ((HttpServletResponse) servletResponse).sendRedirect("/sindex");
+//            filterChain.doFilter(servletRequest,servletResponse);
+//        };
     }
 
     @Override
