@@ -1,11 +1,14 @@
 package com.test.tea;
 
+import com.test.tools.short_msg.short_message;
+import com.test.tools.token.token_util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 import java.util.Map;
@@ -19,18 +22,44 @@ public class t_load {
 
     private String nn;
 
+    @Autowired
+    private token_util tu;
+    private List<Map<String,Object>> uid;
+    @Autowired
+    private short_message sm;
     private List<Map<String,Object>> list;
+    private String tok;
+    private String nnn;
     @RequestMapping("/tland")
+    @ResponseBody
     public String x(@RequestParam(value ="name") String name, @RequestParam(value = "password") String password){
-        String url="";
-        list = jdbcTemplate.queryForList("select tid from teacher where name ='"+name+"' and password='"+password+"'");
-        if( list != null){
-            nn=list.get(0).get("tid").toString();
-            System.out.println(list+password);
-            url ="tea/index_t";
+        list = jdbcTemplate.queryForList("select * from teacher where name ='"+name+"' and password='"+password+"'");
+        if (list  != null) {
+            nn = list.get(0).get("tid").toString();
+            nnn = list.get(0).get("name").toString();
+            tok = tu.token(nn, nnn);
+            System.out.println(uid);
+            return tok;
+        }else{
+            return "a2";
+        }
+    }
+
+    @RequestMapping("/tyann")
+    @ResponseBody
+    public String yannn(String name,String ya) {
+        List<Map<String, Object>> li = jdbcTemplate.queryForList("select tem from teacher where name='" + name + "'");
+//        System.out.println(li);
+        String s = null;
+        if (li != null) {
+            s = sm.bl(li.get(0).get("tem").toString());
+        }
+        if (ya.equals(s)) {
+            return "a1";
+        } else {
+            return "b2";
         }
 
-        return url;
     }
 
     @RequestMapping("tlandd")
@@ -95,6 +124,15 @@ public class t_load {
 //      return "tea/send";
     }
 
+    @RequestMapping("/tyan")
+    @ResponseBody
+    public void yann(String name) throws Exception{
+        List<Map<String,Object>>  li=jdbcTemplate.queryForList("select tem from teacher where name='"+name+"'");
+        System.out.println(li);
+        if (li!=null){
+            sm.shor(li.get(0).get("tem").toString());
+        }
+    }
 
     @RequestMapping("vtitle")
     public String vt(){

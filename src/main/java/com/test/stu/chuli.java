@@ -16,4 +16,7 @@ public class chuli {
 
     @RequestMapping("/vid")
     public String vid(){return "ce/video";}
+
+    @RequestMapping("/svid")
+    public String vids(){return "ce/video_s";}
 }

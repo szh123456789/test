@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="css/fonts/linecons/css/linecons.css">
     <link rel="stylesheet" href="css/fonts/fontawesome/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="autocomplete.js-master/autocomplete.min.css"/>
+    <link rel="stylesheet" href="layui/css/layui.css">
     <script src="autocomplete.js-master/autocomplete.min.js"></script>
 
 <!--    <style>-->
@@ -31,8 +32,8 @@
 <!--        }-->
 
 <!--    </style>-->
-    <script>
-        $(function(){
+    <script type="text/javascript">
+        $(document).ready(function(){
             $.ajax({
                 url: "sett",
                 type:"post",
@@ -41,19 +42,89 @@
             });
         })
 
+        $(document).ready(function(){
+            $.ajax({
+                url: "reaheart",
+                type:"post",
+                sync: false,
+            });
+        })
     </script>
 </head>
-<body>
-<div  >
- <video width="800" id="myvideo" controls="controls" autoplay="autoplay" preload="auto"
-         src="http://localhost:8080/get" type="video/mp4"   onMouseOut="this.pause()" style="width: 909px;" >
-<!--     <source src="http://192.168.18.3:8080/get" type="video/mp4">-->
- </video>
-    <div  id="gt" style="height: 500px">
+<body class="layui-layout-body">
+<div class="layui-layout layui-layout-admin">
+<div class="layui-header">
+    <div class="layui-logo">教育服务平台</div>
+    <!-- 头部区域（可配合layui已有的水平导航） -->
+    <!--        <ul class="layui-nav layui-layout-left">-->
+    <!--            <li class="layui-nav-item"><a href="">控制台</a></li>-->
+    <!--            <li class="layui-nav-item"><a href="">商品管理</a></li>-->
+    <!--            <li class="layui-nav-item"><a href="">用户</a></li>-->
+    <!--            <li class="layui-nav-item">-->
+    <!--                <a href="javascript:;">其它系统</a>-->
+    <!--                <dl class="layui-nav-child">-->
+    <!--                    <dd><a href="">邮件管理</a></dd>-->
+    <!--                    <dd><a href="">消息管理</a></dd>-->
+    <!--                    <dd><a href="">授权管理</a></dd>-->
+    <!--                </dl>-->
+    <!--            </li>-->
+    <!--        </ul>-->
+    <ul class="layui-nav layui-layout-right">
+        <li class="layui-nav-item">
+            <a href="javascript:;">
+                <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
 
+            </a>
+            <!--                <dl class="layui-nav-child">-->
+            <!--                    <dd><a href="">基本资料</a></dd>-->
+            <!--                    <dd><a href="">安全设置</a></dd>-->
+            <!--                </dl>-->
+        </li>
+        <li class="layui-nav-item"><a href="/tlandd" id="exi" onclick="del()">退出</a></li>
+    </ul>
+</div>
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item layui-this"><a href="/sindex" >主页</a></li>
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="/file/show" >文件上传</a>
+
+                </li>
+                <li class="layui-nav-item"><a href="javascript:;" >成绩趋势</a></li>
+                <li class="layui-nav-item"><a href="javascript:;" >本学习课程</a></li>
+                <li class="layui-nav-item"><a href="javascript:;" >小测</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="layui-body" id="viewDiv" style="margin-top: 25px;">
+        <div  >
+            <video width="800" id="myvideo" controls="controls" autoplay="autoplay" preload="auto"
+                   src="http://localhost:8080/get" type="video/mp4"   onMouseOut="this.pause()" style="width: 909px;" >
+                <!--     <source src="http://192.168.18.3:8080/get" type="video/mp4">-->
+            </video>
+            <div  id="gt" style="height: 500px">
+
+            </div>
+
+        </div>
     </div>
 
-</div>
+
+
+
+
+<!--<div  >-->
+<!-- <video width="800" id="myvideo" controls="controls" autoplay="autoplay" preload="auto"-->
+<!--         src="http://localhost:8080/get" type="video/mp4"   onMouseOut="this.pause()" style="width: 909px;" >-->
+<!--&lt;!&ndash;     <source src="http://192.168.18.3:8080/get" type="video/mp4">&ndash;&gt;-->
+<!-- </video>-->
+<!--    <div  id="gt" style="height: 500px">-->
+
+<!--    </div>-->
+
+<!--</div>-->
 
 <script>
 var tt="";
@@ -62,7 +133,7 @@ var l="";
 var t="";
 var ji=0;
 var an="";
-    $(function(){
+$(document).ready(function(){
 
         $.ajax({
             url:"in/gett",
@@ -91,6 +162,18 @@ var an="";
 
     video.addEventListener("timeupdate",function(){
 
+        $.ajax({
+            url: "staheart",
+            type:"post",
+            sync: false,
+            success: function (data) {
+                if (data !== "s1"){
+                    video.pause();
+                    alert("长时间不操作返回主页");
+                    location.assign("/sindex");
+                }
+            }
+        });
         var timeDisplay;
         //用秒数来显示当前播放进度
         timeDisplay = Math.floor(video.currentTime);
@@ -134,6 +217,10 @@ var an="";
             }
     },false);
 
+    video.addEventListener("pause",function () {
+        console.log("123");
+    })
 </script>
+</div>
 </body>
 </html>

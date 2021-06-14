@@ -1,12 +1,39 @@
 <!DOCTYPE html>
 <html xmlns:scrolling="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>layout 主界面 - Layui</title>
-    <link rel="stylesheet" href="layui/css/layui.css">
+    <meta charset="UTF-8">
+    <title>Title</title>
     <script src="/jquery-3.4.1/jquery-3.4.1.min.js"></script>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="css/xenon-components.css">
+    <link rel="stylesheet" href="css/xenon-core.css">
+    <link rel="stylesheet" href="css/xenon-skins.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/fonts/linecons/css/linecons.css">
+    <link rel="stylesheet" href="css/fonts/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="autocomplete.js-master/autocomplete.min.css"/>
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <script src="autocomplete.js-master/autocomplete.min.js"></script>
 
+
+    <style>
+        .search_input{
+            border: none;
+            height: 25px;
+            line-height: 25px;
+            outline: none;
+            width: 350px;
+            vertical-align:bottom;
+        }
+        .suggest{
+            position:absolute;
+            border-top: 0;
+            width: 350px;
+            background-color: #fff;
+            display: none;
+            z-index: 4;
+        }
+    </style>
 </head>
 <body class="layui-layout-body" >
 <div class="layui-layout layui-layout-admin">
@@ -44,30 +71,146 @@
     <div class="layui-side-scroll">
         <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
         <ul class="layui-nav layui-nav-tree"  lay-filter="test">
-            <li class="layui-nav-item"><a href="/sxuan" >选课</a></li>
+            <li class="layui-nav-item layui-this"><a href="/sindex" >主页</a></li>
             <li class="layui-nav-item layui-nav-itemed">
-                <a class="" href="javascript:;" >我听的课</a>
-                <dl class="layui-nav-child">
-                    <dd><a href="/sting" >课程</a></dd>
-                    <dd><a href="/sexam" >考试</a></dd>
-                    <dd><a href="/smessage" >老师评语</a></dd>
-
-                </dl>
+                <a class="" href="javascript:;" >最近答题情况</a>
             </li>
-            <li class="layui-nav-item"><a href="/squshi" >成绩趋势</a></li>
-            <li class="layui-nav-item"><a href="/spload" >本学习课程</a></li>
-            <li class="layui-nav-item"><a href="/ceec" >小测</a></li>
+            <li class="layui-nav-item"><a href="javascript:;" >成绩趋势</a></li>
+            <li class="layui-nav-item"><a href="javascript:;" >本学习课程</a></li>
+            <li class="layui-nav-item"><a href="javascript:;" >小测</a></li>
         </ul>
     </div>
 </div>
 
 <div class="layui-body" id="viewDiv" style="margin-top: 25px;">
+    <section class="sousuo">
+        <div >
+
+        </div>
+    </section>
+
+    <!-- 标签 -->
+    <label for="tags"><input type="search" id="tags" name="searchvalue" class="search_input" placeholder="请搜索.."></label>
+    <button id="cli"  onclick="souu()">确定</button>
+    <div id="context1" class="suggest" >
+    </div>
+    <div class="row" id="roo">
+
+    </div>
+
+    <input value="+i+" type="hidden">
     <script>
-            document.getElementById("viewDiv").innerHTML = '<object type="text/html" data="/ce" width="100%" height="100%"></object>';
+
+        $(function() {
+            var html="";
+            $.ajax({
+                url: "in/de",
+                type:"post",
+                success: function (data) {
+                    console.log(data.mem[0].na);
+                    var n=   data.num[0].fkn;
+                    for (var i =0;i<n;i++){
+                        html+="<div class=\"col-sm-3\" >\n" +
+                            "        <div class=\"xe-widget xe-conversations box2 label-info \" value='"+data.mem[i].fk+"' id='ke"+i+"' onclick='ses(this)' data-toggle=\"tooltip\" data-original-title=\"https://dribbble.com/\"\n" +
+                            "          title=\"\"  data-placement=\"bottom\">\n" +
+                            "            <div class=\"xe-comment-entry\">\n" +
+                            "                <img class=\"img-circle\" >\n" +
+                            "                <div class=\"xe-comment\">\n" +
+                            "                <p class=\"overflowClip_2\">"+data.mem[i].na+"</p>\n" +
+                            "                </div>\n" +
+                            "            </div>\n" +
+                            "        </div>\n" +
+                            "    </div>";
+                    }
+                    document.getElementById('roo').innerHTML=html;
+                }
+            })
+        });
+
+        function souu() {
+            var s=$("#tags").val();
+            var html="";
+            $.ajax({
+                url:'in/sou',
+                type:'post',
+                data:{"name" :s},
+                success:function (data) {
+                    console.log(data.mem[0].na);
+                    var n=   data.num[0].fkn;
+                    for (var i =0;i<n;i++){
+                        html+="<div class=\"col-sm-3\" >\n" +
+                            "        <div class=\"xe-widget xe-conversations box2 label-info \" value='"+data.mem[i].fk+"' id='ke"+i+"' onclick='ses(this)' data-toggle=\"tooltip\" data-original-title=\"https://dribbble.com/\"\n" +
+                            "          title=\"\"  data-placement=\"bottom\">\n" +
+                            "            <div class=\"xe-comment-entry\">\n" +
+                            "                <img class=\"img-circle\" >\n" +
+                            "                <div class=\"xe-comment\">\n" +
+                            "                <p class=\"overflowClip_2\">"+data.mem[i].na+"</p>\n" +
+                            "                </div>\n" +
+                            "            </div>\n" +
+                            "        </div>\n" +
+                            "    </div>";
+                    }
+                    document.getElementById('roo').innerHTML=html;
+                }
+            })
+        }
+        function ses(k){
+
+            var s=document.getElementById(k.id).getAttribute("value");
+            localStorage.fk=s;
+            location.assign("/svid")
+        }
+        function changeBackColor_over(div){
+            $(div).css("background-color","#CCCCCC");
+        }
+        //鼠标离开内容
+        function changeBackColor_out(div){
+            $(div).css("background-color","");
+        }
+        //将点击的内容放到搜索框
+        function setSearch_onclick(div){
+            $("#tags").val(div.innerText);
+            $("#context1").css("display","none");
+        }
+
+        $("#tags").keyup(function(){
+            var content=$(this).val();
+            //如果当前搜索内容为空，无须进行查询
+            if(content==""){
+                $("#context1").css("display","none");
+                return ;
+            }
+            //由于浏览器的缓存机制 所以我们每次传入一个时间
+            var time=new Date().getTime();
+            debugger;
+            $.ajax({
+                type:"get",
+                //新建一个名为findBooksAjaxServlet的servlet
+                url:"comp",
+                data:{'term':content},
+                success:function(data){
+                    var d = data.toString();
+                    //拼接html
+                    console.log(data);
+                    var res=d.split(",");
+                    var html="";
+                    for(var i=0;i<res.length;i++){
+                        //每一个div还有鼠标移出、移入点击事件
+                        html+="<div onclick='setSearch_onclick(this)' onmouseout='changeBackColor_out(this)' onmouseover='changeBackColor_over(this)'>"+res[i]+"</div>";
+                    }
+                    $("#context1").html(html);
+                    //显示为块级元素
+                    $("#context1").css("display","block");
+                }
+            });
+        });
+
+
+
     </script>
 </div>
 
-<
+
 </div>
 <script src="layui/layui.js"></script>
 <script>

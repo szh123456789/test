@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.net.Inet4Address;
+import java.net.InetAddress;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class breakk {
@@ -30,8 +33,14 @@ public class breakk {
 
     @Test
     public void s() throws  Exception{
-        heartclient hc = new heartclient("192.168.18.3",9999);
-         hc.run();
-         Thread.sleep(10000);
+        InetAddress ip4 = Inet4Address.getLocalHost();
+        heartclient hc = new heartclient(ip4.getHostAddress(),9999);
+        hc.bs();
+        while (true){
+            hc.run();
+            Thread.sleep(10000);
+        }
+//        Thread.sleep(3000);
+
     }
 }

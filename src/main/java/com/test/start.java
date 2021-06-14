@@ -1,5 +1,6 @@
 package com.test;
 
+import com.test.tools.heartbreak.heartbreakserver;
 import org.apache.ibatis.annotations.Mapper;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
@@ -18,12 +19,15 @@ import java.util.Map;
 
 @MapperScan("com.test")
 public class start {
+
+    public static heartbreakserver hs;
     public static void main(String[] args) {
 //        Map<String,String> map = new HashMap<>();
 //        List<String> li = new ArrayList<>();
         System.setProperty("es.set.netty.runtime.available.processors", "false");
         SpringApplication.run(start.class, args);
-
+        hs=new heartbreakserver(9999);
+        hs.startServer();
 //            String url ="http://localhost:8080/S_Land";
 //            Runtime runtime = Runtime.getRuntime();
 //            try{

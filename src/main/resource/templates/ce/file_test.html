@@ -138,6 +138,34 @@
     </script>
 </head>
 <body>
+<div class="layui-layout layui-layout-admin">
+<div class="layui-header">
+    <div class="layui-logo">教育服务平台</div>
+    <ul class="layui-nav layui-layout-right">
+        <li class="layui-nav-item">
+            <a href="javascript:;">
+                <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
+
+            </a>
+        </li>
+        <li class="layui-nav-item"><a href="/tlandd" id="exi" onclick="del()">退出</a></li>
+    </ul>
+</div>
+<div class="layui-side layui-bg-black">
+    <div class="layui-side-scroll">
+        <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+        <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+            <li class="layui-nav-item "><a href="/tindex" >主页</a></li>
+            <li class="layui-nav-item layui-nav-itemed layui-this">
+                <a class="" href="/file/show" >上传文件</a>
+            </li>
+            <li class="layui-nav-item"><a href="javascript:;" >成绩趋势</a></li>
+            <li class="layui-nav-item"><a href="javascript:;" >本学习课程</a></li>
+            <li class="layui-nav-item"><a href="javascript:;" >小测</a></li>
+        </ul>
+    </div>
+</div>
+<div class="layui-body" id="viewDiv" style="margin-top: 25px;">
 <table border="1px solid red">
     <tr>
         <td>文件1</td>
@@ -152,16 +180,19 @@
         </td>
     </tr>
 </table>
+    <div>
+        <a href="/vtitle" onclick="chuan()">设置题目</a>
+        <!--    <button id="tit" onclick="sub()">设置题目</button>-->
+    </div>
+</div>
 <div class="progress-title" style="font-size: 14px;color: #fff"></div>
 
-<div>
-    <a href="/vtitle" onclick="chuan()">设置题目</a>
-<!--    <button id="tit" onclick="sub()">设置题目</button>-->
-</div>
+
 <!--<script>-->
 <!--    function sub() {-->
 <!--        window.open("/vtitle");-->
 <!--    }-->
 <!--</script>-->
+</div>
 </body>
 </html>

@@ -87,8 +87,10 @@
         var val=$('input:radio[name="xuan"]:checked').val();
         s=document.getElementById(val).value;
         if (s==localStorage.ans){
+
             localStorage.aa=1;
         }else{
+            alert("回答错误");
             localStorage.aa=0;
         }
     }

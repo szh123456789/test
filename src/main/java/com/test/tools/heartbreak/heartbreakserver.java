@@ -25,7 +25,7 @@ public class heartbreakserver {
 
     ServerBootstrap b;
 
-    private static final int READ_WAIT_SECONDS = 3;
+    private static final int READ_WAIT_SECONDS = 10;
 
     public void startServer(){
         EventLoopGroup bossGroup = new NioEventLoopGroup();

@@ -42,7 +42,7 @@ public class load {
     public String x(@RequestParam("name") String name,@RequestParam("password") String password){
 
      uid=jdbcTemplate.queryForList("select * from student where name ='"+name+"' and password='"+password+"'");
-          if (uid .size()>0) {
+          if (uid != null) {
               nn = uid.get(0).get("sid").toString();
               nnn = uid.get(0).get("name").toString();
               tok = tu.token(nn, nnn);

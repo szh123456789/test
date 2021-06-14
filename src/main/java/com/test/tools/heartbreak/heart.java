@@ -69,7 +69,7 @@ public class heart extends SimpleChannelInboundHandler<String> {
     public void channelInactive(ChannelHandlerContext ctx) throws Exception {
         ctx.close();
         System.out.println("===服务端===(客户端失效)");
-
+        System.out.println(unRecPingTimes);
     }
 
     private void setUserOnlineStatus(String userid, boolean isOnline){

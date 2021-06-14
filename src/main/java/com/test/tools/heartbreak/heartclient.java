@@ -1,10 +1,7 @@
 package com.test.tools.heartbreak;
 
 import io.netty.bootstrap.Bootstrap;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelPipeline;
-import io.netty.channel.EventLoopGroup;
+import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
@@ -28,31 +25,48 @@ public class heartclient {
         this.port = port;
     }
 
-    public void run() throws  Exception{
-        EventLoopGroup group = new NioEventLoopGroup();
+    EventLoopGroup group = new NioEventLoopGroup();
+    Bootstrap bootstrap = new Bootstrap();
+    Channel channel;
+    public void bs() throws Exception{
+        bootstrap.group(group)
+                .channel(NioSocketChannel.class)
+                .handler(new ChannelInitializer<SocketChannel>() {
+                    @Override
+                    protected void initChannel(SocketChannel socketChannel) throws Exception {
+                        ChannelPipeline pipeline = socketChannel.pipeline();
+                        pipeline.addLast("framer",new DelimiterBasedFrameDecoder(8192, Delimiters.lineDelimiter()));
+                        pipeline.addLast("decoder", new StringDecoder());
+                        pipeline.addLast("encoder", new StringEncoder());
+                    }
+                });
+        channel = bootstrap.connect(host,port).sync().channel();
+
+    }
+
+
+    public String run() {
+
         try{
-            Bootstrap bootstrap = new Bootstrap();
-            bootstrap.group(group)
-                    .channel(NioSocketChannel.class)
-                    .handler(new ChannelInitializer<SocketChannel>() {
-                        @Override
-                        protected void initChannel(SocketChannel socketChannel) throws Exception {
-                            ChannelPipeline pipeline = socketChannel.pipeline();
-                            pipeline.addLast("framer",new DelimiterBasedFrameDecoder(8192, Delimiters.lineDelimiter()));
-                            pipeline.addLast("decoder", new StringDecoder());
-                            pipeline.addLast("encoder", new StringEncoder());
-                        }
-                    });
-            Channel channel = bootstrap.connect(host,port).sync().channel();
-            BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-            while(true) {
+
+            if (channel.isActive()){
                 channel.writeAndFlush("456");
-                Thread.sleep(1000);
+                return "s1";
+            }else{
+                System.out.println(111111);
+                this.sto();
+                return "s2";
             }
+
         }catch(Exception e){
             e.printStackTrace();
-        }finally {
-            group.shutdownGracefully();
+            return "s3";
         }
     }
+
+    public void sto(){
+        group.shutdownGracefully();
+    }
+
+
 }
