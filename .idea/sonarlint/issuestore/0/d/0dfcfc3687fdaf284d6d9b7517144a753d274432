@@ -1,13 +1,0 @@
-
-csquid:S00112t"FDefine and throw a dedicated exception instead of using a generic one.(™¸ÔÛüÿÿÿÿ
-Usquid:S3752k">Add a "method" parameter to this "@RequestMapping" annotation.(üš”¬
-jsquid:S2095~"NUse try-with-resources or close this "FileOutputStream" in a "finally" clause.(À¾ºØıÿÿÿÿ
-esquid:S2095†"MUse try-with-resources or close this "FileInputStream" in a "finally" clause.(Êïóü
-Zsquid:S3752'">Add a "method" parameter to this "@RequestMapping" annotation.(ÚÊãùşÿÿÿÿ
-Ssquid:S37529">Add a "method" parameter to this "@RequestMapping" annotation.(“ÿ
-
-Zsquid:S1155o">Use isEmpty() to check whether the collection is empty or not.(Åàóİúÿÿÿÿ
-lsquid:S1215™"TDon't try to be smarter than the JVM, remove this call to run the garbage collector.(Ì°¬“
-Gsquid:S2093ƒ"*Change this "try" to a try-with-resources.(¡»¢üùÿÿÿÿ
-fsquid:S4042Ÿ"IUse "java.nio.Files#delete" here for better messages on error conditions.(û«İøøÿÿÿÿ
-osquid:UselessImportCheck"?Remove this unused import 'java.util.concurrent.BlockingDeque'.(ºÓÍêÿÿÿÿÿ8ïõÄ/

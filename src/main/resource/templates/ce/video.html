@@ -15,23 +15,7 @@
     <link rel="stylesheet" href="layui/css/layui.css">
     <script src="autocomplete.js-master/autocomplete.min.js"></script>
 
-<!--    <style>-->
 
-<!--        .one,.two{-->
-
-<!--            width: 50%;-->
-
-<!--            height: 700px;-->
-
-<!--            border:1px solid #ccc;-->
-
-<!--            float: left;-->
-
-<!--            box-sizing: border-box;-->
-
-<!--        }-->
-
-<!--    </style>-->
     <script type="text/javascript">
         $(document).ready(function(){
             $.ajax({
@@ -55,30 +39,12 @@
 <div class="layui-layout layui-layout-admin">
 <div class="layui-header">
     <div class="layui-logo">教育服务平台</div>
-    <!-- 头部区域（可配合layui已有的水平导航） -->
-    <!--        <ul class="layui-nav layui-layout-left">-->
-    <!--            <li class="layui-nav-item"><a href="">控制台</a></li>-->
-    <!--            <li class="layui-nav-item"><a href="">商品管理</a></li>-->
-    <!--            <li class="layui-nav-item"><a href="">用户</a></li>-->
-    <!--            <li class="layui-nav-item">-->
-    <!--                <a href="javascript:;">其它系统</a>-->
-    <!--                <dl class="layui-nav-child">-->
-    <!--                    <dd><a href="">邮件管理</a></dd>-->
-    <!--                    <dd><a href="">消息管理</a></dd>-->
-    <!--                    <dd><a href="">授权管理</a></dd>-->
-    <!--                </dl>-->
-    <!--            </li>-->
-    <!--        </ul>-->
     <ul class="layui-nav layui-layout-right">
         <li class="layui-nav-item">
             <a href="javascript:;">
                 <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
 
             </a>
-            <!--                <dl class="layui-nav-child">-->
-            <!--                    <dd><a href="">基本资料</a></dd>-->
-            <!--                    <dd><a href="">安全设置</a></dd>-->
-            <!--                </dl>-->
         </li>
         <li class="layui-nav-item"><a href="/tlandd" id="exi" onclick="del()">退出</a></li>
     </ul>
@@ -102,7 +68,6 @@
         <div  >
             <video width="800" id="myvideo" controls="controls" autoplay="autoplay" preload="auto"
                    src="http://localhost:8080/get" type="video/mp4"   onMouseOut="this.pause()" style="width: 909px;" >
-                <!--     <source src="http://192.168.18.3:8080/get" type="video/mp4">-->
             </video>
             <div  id="gt" style="height: 500px">
 
@@ -111,22 +76,8 @@
         </div>
     </div>
 
-
-
-
-
-<!--<div  >-->
-<!-- <video width="800" id="myvideo" controls="controls" autoplay="autoplay" preload="auto"-->
-<!--         src="http://localhost:8080/get" type="video/mp4"   onMouseOut="this.pause()" style="width: 909px;" >-->
-<!--&lt;!&ndash;     <source src="http://192.168.18.3:8080/get" type="video/mp4">&ndash;&gt;-->
-<!-- </video>-->
-<!--    <div  id="gt" style="height: 500px">-->
-
-<!--    </div>-->
-
-<!--</div>-->
-
 <script>
+
 var tt="";
 var dt="";
 var l="";
@@ -143,7 +94,7 @@ $(document).ready(function(){
                 l=data.length;
                 dt=data;
                 console.log(data);
-                // console.log(tt);
+
                 localStorage.dat=dt[0].title;
                 localStorage.a=dt[0].a;
                 localStorage.b=dt[0].b;
@@ -154,6 +105,7 @@ $(document).ready(function(){
             }
         })
     })
+
     var sim=0;
     //监听播放时间
     var video = document.getElementById('myvideo');
@@ -181,16 +133,9 @@ $(document).ready(function(){
         //当视频播放到 4s的时候做处理
 
             if (timeDisplay == tt) {
-                // if(t!=tt){
-                //     console.log("-------");
-                //     sim=0;
-                //     t=tt;
-                //     console.log(t);
-                // }
                 if (sim == 0) {
                     video.pause();
                     document.getElementById("gt").innerHTML='<iframe id="gtt" style="height:70%;width:50%" src = "/in/gtl" scrolling="yes"></iframe>';
-                    // document.getElementById("viewDiv").innerHTML = '<object type="text/html" data="/ce" width="100%" height="100%"></object>';
 
                     if (ji==l){
                         sim = 1;

@@ -1,14 +1,10 @@
 package com.test.config;
 
-import com.test.tools.token.token_util;
-import org.springframework.boot.web.servlet.ServletComponentScan;
+import com.test.service.tools.token.token_util;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.logging.LogRecord;
 
 @WebFilter(urlPatterns = {"/"})
 public class filter implements Filter {

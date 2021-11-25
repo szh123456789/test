@@ -1,14 +1,0 @@
-
-T
-squid:S106#"9Replace this use of System.out or System.err by a logger.(˜ïõ«úÿÿÿÿ
-T
-squid:S106F"9Replace this use of System.out or System.err by a logger.(Å­Ëİúÿÿÿÿ
-lsquid:S2259""UA "NullPointerException" could be thrown; "elasticsearchTemplate__" is nullable here.(Õ¹ñ§
-Hsquid:S1612E",Replace this lambda with a method reference.(¤õòÕøÿÿÿÿ
-Hsquid:S1602E",Remove useless curly braces around statement(¤õòÕøÿÿÿÿ
-esquid:S00101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(ÀÆ¨
-nsquid:S00117"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(óÚÛÿÿÿÿÿ
-nsquid:S3776"RRefactor this method to reduce its Cognitive Complexity from 25 to the 15 allowed.(óÚÛÿÿÿÿÿ
-O
-squid:S106!"9Replace this use of System.out or System.err by a logger.(šÁÿß
-Ksquid:S1611E"/Remove the parentheses around the "s" parameter(¤õòÕøÿÿÿÿ

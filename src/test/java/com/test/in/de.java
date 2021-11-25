@@ -1,8 +1,7 @@
 package com.test.in;
 
 
-import checkers.units.quals.min;
-import com.test.min.ind;
+import com.test.controller.ques.ind;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
